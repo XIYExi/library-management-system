@@ -2,7 +2,7 @@
 
 孩子不懂事，随便写着玩的
 
-![p9IY8aj.md.jpg](https://s1.ax1x.com/2023/05/21/p9IY8aj.md.jpg)
+<img width="50%" src="https://s1.ax1x.com/2023/05/21/p9IY8aj.jpg" alt="p9IY8aj.jpg" border="0" />
 
 ---
 
