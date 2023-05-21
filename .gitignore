@@ -1,2 +1,8 @@
 # Project exclude paths
 /Api/target/
+/Api/.idea
+
+/.idea
+
+/Frontend/.idea
+
