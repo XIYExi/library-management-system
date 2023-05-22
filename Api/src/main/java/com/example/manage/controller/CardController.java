@@ -3,16 +3,20 @@ package com.example.manage.controller;
 
 import com.baomidou.mybatisplus.core.metadata.IPage;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
+import com.example.manage.controller.vo.BorrowingMsgVo;
 import com.example.manage.controller.vo.UserInsertVo;
 import com.example.manage.pojo.Card;
 import com.example.manage.pojo.User;
+import com.example.manage.service.impl.BorrowingServiceImpl;
 import com.example.manage.service.impl.CardServiceImpl;
 import com.example.manage.service.impl.UserServiceImpl;
 import com.example.manage.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.Date;
 import java.util.List;
+import java.util.Objects;
 
 @RestController
 @RequestMapping("/card")
@@ -23,6 +27,46 @@ public class CardController {
 
     @Autowired
     private CardServiceImpl cardService;
+    
+    @Autowired
+    private BorrowingServiceImpl borrowingService;
+
+    @PostMapping("/canBorrow")
+    public R canBorrow(@RequestParam("sno")String sno,
+                       @RequestParam("bno")String bno){
+        Long _bno = Long.parseLong(bno);
+
+        // 先查出借阅列表
+        List<BorrowingMsgVo> borrowingListBySno = borrowingService.getBorrowingListBySno(sno);
+        
+        // 再查card，看其最大借阅数量
+        Card byId = cardService.getById(sno);
+
+        // 小于才可以借，大于等于不可以
+        if(borrowingListBySno.size() < byId.getSup()){
+            // 数量不超标的情况下，再去查询是否有过期书没有还
+            for(BorrowingMsgVo item:borrowingListBySno){
+
+                System.out.println(item.getTime());
+                // BorrowingMsgVo中time属性表示预期时间，如果为正就表示有书没还，此时不可以借书
+                if(item.getTime() > 0)
+                    return R.ok().data("res","有书逾期，请先还书");
+
+                // 不可以重复借阅
+                if(Objects.equals(item.getBno(), _bno)){
+                    System.out.println("不可以");
+                    return R.ok().data("res","已经借过这本书了，不要重复借阅");
+                }
+
+            }
+
+        }
+        else{
+            return R.ok().data("res", "借阅数量已经达到上限");
+        }
+
+        return R.ok().data("res","ok");
+    }
 
 
     @PostMapping("/insert")

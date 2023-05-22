@@ -14,4 +14,8 @@ public interface BookService extends IService<Book> {
     IPage<Book> findAll(Page<Book> page);
 
     List<Book> selectTitle(String bna);
+
+    List<Book> selectRandByBno();
+
+    List<Book> selectBookForStu();
 }

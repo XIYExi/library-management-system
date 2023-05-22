@@ -16,4 +16,7 @@ public interface UserMapper extends BaseMapper<User> {
     @Select("select * from `user` where sna like concat('%', #{sna}, '%') and `delete` != 1  and `sno` = '0'")
     public abstract List<User> selectBySna(String sna);
 
+    @Select("select * from user where `delete` != 1 and sno != '0' order by RAND() limit 10")
+    public abstract List<User> selectRandomBySno();
+
 }

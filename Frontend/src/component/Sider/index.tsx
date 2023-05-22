@@ -56,6 +56,22 @@ const MenuSlider = (props: any) => {
           藏书库
         </Menu.Item>
         <Menu.Item
+          icon={<UserOutlined />}
+          onClick={() => {
+            history.push('/myborrowing');
+          }}
+        >
+          我的借阅
+        </Menu.Item>
+        <Menu.Item
+          icon={<UserOutlined />}
+          onClick={() => {
+            history.push('/borrowbook');
+          }}
+        >
+          借书
+        </Menu.Item>
+        <Menu.Item
           icon={<AndroidOutlined />}
           onClick={() => {
             history.push('/mock');

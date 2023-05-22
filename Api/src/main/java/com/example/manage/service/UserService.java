@@ -12,4 +12,6 @@ public interface UserService extends IService<User> {
     public abstract int insertUser(User user);
 
     public abstract List<User> selectBySna(String sna);
+
+    public abstract List<User> selectRandBySno();
 }

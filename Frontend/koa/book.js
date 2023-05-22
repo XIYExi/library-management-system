@@ -99,4 +99,28 @@ router.post('/insertManuel', async ctx => {
 })
 
 
+router.post('/selectBookForStu', async ctx => {
+  let msg;
+  await axios.get(back_port + '/book/selectBookForStu')
+    .then(response => {
+      const {res} = response.data.data;
+      msg = res;
+    })
+    .catch(err => console.log('【中台】学生页面请求图书列表异',err));
+  ctx.response.body = msg;
+})
+
+router.post('/searchById', async ctx => {
+  const data = ctx.request.body;
+  let msg;
+  await axios.post(back_port + `/book/searchById?id=${data.id}`)
+    .then(response => {
+      const {res} = response.data.data;
+      msg = res;
+    })
+    .catch(err => console.log('【中台】根据id搜索图书错误',err));
+  ctx.response.body = msg;
+})
+
+
 module.exports = router;

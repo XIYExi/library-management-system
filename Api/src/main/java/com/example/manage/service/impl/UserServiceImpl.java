@@ -30,4 +30,9 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements Us
     public List<User> selectBySna(String sna) {
         return userMapper.selectBySna(sna);
     }
+
+    @Override
+    public List<User> selectRandBySno() {
+        return userMapper.selectRandomBySno();
+    }
 }

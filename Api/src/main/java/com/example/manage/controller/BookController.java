@@ -9,6 +9,7 @@ import com.example.manage.utils.R;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -97,4 +98,27 @@ public class BookController {
         else
             return R.ok().data("res", "ok");
     }
+
+    @GetMapping("/selectBookForStu")
+    public R selectBookForStu(){
+
+        List<Book> books = bookService.selectBookForStu();
+        if(books.size() != 0)
+            return R.ok().data("res", books);
+        else
+            return R.ok().data("res",new ArrayList<Book>());
+    }
+
+    @PostMapping("/searchById")
+    public R searchById(@RequestParam("id")String id){
+        Long _id = Long.parseLong(id);
+        Book bookServiceById = bookService.getById(_id);
+
+        if(bookServiceById != null){
+            return R.ok().data("res",bookServiceById);
+        }
+        else
+            return R.ok().data("res", new Book());
+    }
+
 }

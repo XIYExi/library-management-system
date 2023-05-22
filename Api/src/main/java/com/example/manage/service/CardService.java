@@ -11,6 +11,7 @@ public interface CardService extends IService<Card> {
 
     public abstract int insertCard(Card card);
 
+    public abstract List<Card> selectRand();
 
     IPage<Card> findAll(Page<Card> page);
 

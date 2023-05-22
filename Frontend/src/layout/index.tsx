@@ -13,7 +13,7 @@ export default function LayoutPage({ children }: IRouteComponentProps){
   return(
     <React.Fragment>
       <Layout>
-        <Layout.Header>图书管理系统</Layout.Header>
+        <Layout.Header style={{color:'white', fontSize:'24px'}}>小水獭图书管理系统</Layout.Header>
 
         <Layout>
           <Layout.Sider
@@ -31,8 +31,7 @@ export default function LayoutPage({ children }: IRouteComponentProps){
               {children}
             </Layout.Content>
             <Layout.Footer>
-              <Divider >Footer占位用</Divider>
-              <div style={{textAlign:'center'}}>Footer</div>
+              <div style={{textAlign:'center'}}>小水獭图书管理系统</div>
             </Layout.Footer>
           </Layout>
         </Layout>

@@ -97,7 +97,17 @@ router.post('/addCard', async ctx => {
   ctx.response.body = msg;
 })
 
-
+router.post("/canBorrow",async ctx => {
+  const data = ctx.request.body;
+  let msg;
+  await axios.post(back_port +`/card/canBorrow?sno=${data.sno}&bno=${data.bno}`)
+    .then(response => {
+      const {res} = response.data.data;
+      msg = res;
+    })
+    .catch(err => console.log('【中台】查询用户是否可以继续借书',err));
+  ctx.response.body = msg;
+})
 
 
 module.exports = router;

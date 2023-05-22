@@ -18,4 +18,11 @@ public interface CardMapper extends BaseMapper<Card> {
 
     @Select("select * from card where `sna` like concat('%', #{sna}, '%') and `delete` != 1")
     List<Card> findBySna(String sna);
+
+    /**
+     * 返回的now < sup, 那么now肯定逼sup，至少都要少一个，所以可以大胆+1
+     * @return List<Card>
+     */
+    @Select("select * from card where `delete` != 1 and `now` < `sup` order by RAND() limit 10")
+    List<Card> selectRand();
 }

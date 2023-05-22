@@ -33,7 +33,7 @@ public class Card {
     @TableField(value = "`createTime`", fill = FieldFill.INSERT)
     private Date createTime;
 
-    @TableField(value = "`updateTime`", fill = FieldFill.INSERT_UPDATE)
+    @TableField(value = "`updateTime`", fill = FieldFill.INSERT_UPDATE, update = "now()")
     private Date updateTime;
 
     @TableField(value = "`version`", fill = FieldFill.INSERT)
@@ -43,6 +43,9 @@ public class Card {
     @TableField(value = "`delete`", fill = FieldFill.INSERT)
     @TableLogic
     private Integer delete;
+
+    @TableField(value = "now")
+    private Integer now;
 
 
 }

@@ -36,7 +36,7 @@ public class Book {
     @TableField(value = "`createTime`", fill = FieldFill.INSERT)
     private Date createTime;
 
-    @TableField(value = "`updateTime`", fill = FieldFill.INSERT_UPDATE)
+    @TableField(value = "`updateTime`", fill = FieldFill.INSERT_UPDATE, update = "now()")
     private Date updateTime;
 
     @TableField(value = "`version`", fill = FieldFill.INSERT)

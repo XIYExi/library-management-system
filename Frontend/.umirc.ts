@@ -12,6 +12,16 @@ export default defineConfig({
       routes:[
         {
           exact: true,
+          path:'/borrowbook',
+          component: '../pages/borrowbook',
+        },
+        {
+          exact: true,
+          path:'/myborrowing',
+          component: '../pages/myborrowing',
+        },
+        {
+          exact: true,
           path:'/borrowing',
           component: '../pages/borrowing'
         },
@@ -35,6 +45,11 @@ export default defineConfig({
           path:'/user',
           component: '../pages/user'
         },
+        {
+          exact: true,
+          path:'/',
+          component: '../pages/home'
+        }
       ]
     },
   ],

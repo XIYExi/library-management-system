@@ -36,4 +36,14 @@ public class BookServiceImpl extends ServiceImpl<BookMapper, Book> implements Bo
         else
             return new ArrayList<Book>();
     }
+
+    @Override
+    public List<Book> selectRandByBno() {
+        return bookMapper.selectRandByBno();
+    }
+
+    @Override
+    public List<Book> selectBookForStu() {
+        return bookMapper.selectBookForStu();
+    }
 }

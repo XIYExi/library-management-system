@@ -23,6 +23,11 @@ public class CardServiceImpl extends ServiceImpl<CardMapper, Card> implements Ca
     }
 
     @Override
+    public List<Card> selectRand() {
+        return cardMapper.selectRand();
+    }
+
+    @Override
     public IPage<Card> findAll(Page<Card> page) {
         return cardMapper.findAll(page);
     }
