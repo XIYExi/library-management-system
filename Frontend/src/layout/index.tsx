@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
-import { Divider, Layout } from 'antd';
+import React, {useEffect, useState} from 'react';
+import {  Layout } from 'antd';
 import { IRouteComponentProps } from 'umi';
 import MenuSlider from '@/component/Sider';
+import {history} from "umi";
 
 export default function LayoutPage({ children }: IRouteComponentProps){
 
@@ -9,6 +10,12 @@ export default function LayoutPage({ children }: IRouteComponentProps){
   const onCollapse = (collapse:any) => {
     setCollapsed(collapse);
   };
+
+  useEffect(()=>{
+    if(localStorage.getItem("sno") === null){
+      history.push('/login')
+    }
+  },[])
 
   return(
     <React.Fragment>
