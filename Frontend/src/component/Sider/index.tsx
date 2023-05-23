@@ -12,9 +12,7 @@ import {history} from 'umi';
 const MenuSlider = (props: any) => {
 
   const [type,setType] = useState<string>('');
-  const [sno, setSno] = useState<string>('');
   useEffect(()=>{
-    setSno(localStorage.getItem("sno") || '');
     setType(localStorage.getItem("type") || "user");
   }, [])
 
@@ -101,11 +99,9 @@ const MenuSlider = (props: any) => {
           )
         }
 
-
         <Menu.Item
           icon={<LogoutOutlined />}
           onClick={() => {
-            setSno('');
             setType('');
             localStorage.removeItem("type");
             localStorage.removeItem("sno");
@@ -114,8 +110,6 @@ const MenuSlider = (props: any) => {
         >
           退出
         </Menu.Item>
-
-
       </Menu>
 
     </React.Fragment>

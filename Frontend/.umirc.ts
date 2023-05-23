@@ -11,6 +11,11 @@ export default defineConfig({
       component: '@/pages/login/index',
     },
     {
+      exact: true,
+      path:'/vipcard',
+      component: '@/pages/vipcard/index',
+    },
+    {
       exact: false,
       path: '/',
       component: '@/layout/index',
