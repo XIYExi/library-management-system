@@ -3,7 +3,7 @@ import { Menu, Slider } from 'antd';
 import {
   AndroidOutlined, BookOutlined,
   ClockCircleOutlined,
-  IdcardOutlined, LogoutOutlined,
+  IdcardOutlined, LogoutOutlined, RadiusSettingOutlined,
   ReadOutlined, RobotOutlined, SearchOutlined, UserOutlined,
 } from '@ant-design/icons';
 import {history} from 'umi';
@@ -94,6 +94,14 @@ const MenuSlider = (props: any) => {
                 }}
               >
                 借书
+              </Menu.Item>
+              <Menu.Item
+                icon={<RadiusSettingOutlined />}
+                onClick={() => {
+                  history.push('/vipcard');
+                }}
+              >
+                自定义借阅卡
               </Menu.Item>
             </>
           )

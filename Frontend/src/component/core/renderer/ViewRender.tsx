@@ -71,7 +71,7 @@ const ViewRender = memo((props:ViewProps) => {
       {
         pointData.map((value:PointDataItem) => {
           return(
-            <ItemWrapper key={value.id} data-grid={value.point}>
+            <ItemWrapper id={`${value.id}-key`} key={value.id} data-grid={value.point}>
               <DynamicEngine isTpl={false} {...(value.item as any)}/>
             </ItemWrapper>
           )

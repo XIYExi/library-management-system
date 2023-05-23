@@ -1,7 +1,8 @@
 import React, { useRef, memo, useMemo, useState, useEffect } from 'react';
-import { Button, Input, Modal, Upload, Tooltip, Badge, Image } from 'antd';
+import { Button, Input, Modal } from 'antd';
 import type { InputRef } from 'antd';
 import styles from './index.less';
+import './index.less';
 import {
   ArrowLeftOutlined,
   MobileOutlined,
@@ -11,15 +12,12 @@ import {
   UndoOutlined,
   RedoOutlined,
   FileAddOutlined,
-  CodeOutlined,
-  SketchOutlined,
-  UploadOutlined,
-  InstagramOutlined,
 } from '@ant-design/icons';
 /*@ts-ignore*/
 import { history } from 'umi';
 import { saveAs } from 'file-saver';
 import {uuid} from "@/component/utils";
+const domtoimage = require('dom-to-image');
 
 const { confirm } = Modal;
 // TODO 测试用
@@ -88,6 +86,34 @@ const HeaderComponent = memo((props: HeaderComponentProps) => {
       cancelText: '取消',
       onOk() {
         // 未来的下载代码逻辑
+        let spans = Array.from(document.getElementsByClassName("react-resizable-handle"));
+        console.log(spans)
+        spans.map(v => {
+          //@ts-ignore
+          v.style.display = 'none';
+        })
+
+
+        let node:any = document.getElementById('envelope_canvas');
+        // 先处理所有的 className为 'react-resizable-handle react-resizable-handle-se' 的span都处理掉，隐藏角标
+        let name = node.getAttribute("class");
+        node.className = `${name} node`;
+
+
+        domtoimage.toPng(node, {
+          quality: 0.95,
+          imagePlaceholder: ''
+        })
+          .then(function (dataUrl:any) {
+            let link = document.createElement('a');
+            link.download = 'vip-card-image.jpeg';
+            link.href = dataUrl;
+            link.click();
+            spans.map(v => {
+              //@ts-ignore
+              v.style.display = 'block';
+            })
+          })
       },
     });
   };

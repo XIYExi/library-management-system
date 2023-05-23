@@ -2,6 +2,8 @@ import React,{FC,memo,useState} from "react";
 import {Image} from "antd";
 import {IImageConfig} from "@/materials/Image/schema";
 import styled from "styled-components";
+import img from '@/assets/image.svg';
+import logo from '@/assets/logo.png';
 
 interface IImageProps extends IImageConfig{
   isTpl: boolean;
@@ -45,7 +47,7 @@ const AImage:FC<IImageProps> = (props) => {
     <>
       {
         isTpl ? (
-          <Image src={''} alt={'Image预览链接错误'}/>
+          <Image style={{padding:'1em'}} src={img} alt={'Image预览链接错误'}/>
         ) : (
           <AImageWrapper
             circle={circle}
@@ -59,7 +61,8 @@ const AImage:FC<IImageProps> = (props) => {
           >
             <AImageContainer>
               <Image
-                src={src}
+                preview={false}
+                src={logo}
                 alt="图片src链接错误"
                 style={{ width: '100%',borderRadius: ((circle && '50%')||0) }}
               />

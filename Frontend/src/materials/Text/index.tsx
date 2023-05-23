@@ -2,6 +2,7 @@ import React, {FC, memo} from "react";
 import {ITextConfig} from "@/materials/Text/schema";
 import styled from "styled-components";
 import {Image, Typography} from "antd";
+import img from '@/assets/Typography.svg';
 
 export interface ITextConfigProps extends ITextConfig {
   isTpl: boolean;
@@ -27,8 +28,8 @@ const AText:FC<ITextConfigProps> = (props:any) => {
     <>
       {
         isTpl ? (
-          <div>
-            <Image src={''} alt='Text预览异常'/>
+          <div style={{padding:'1em'}}>
+            <Image src={img} alt='Text预览异常'/>
           </div>
         ) : (
           <ATextWrapper
