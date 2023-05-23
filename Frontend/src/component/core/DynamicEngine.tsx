@@ -1,4 +1,4 @@
-import {dynamic} from 'umi';
+import { dynamic } from 'umi';
 import React, {FC, memo, useMemo} from "react";
 import {Spin} from "antd";
 

@@ -1,11 +1,16 @@
+/**
+ * @Description: koa中台服务器入口，原本叫app.js，但是会和dva重名，现修改为koaApp.js
+ * @Author: xiye
+ * @date: 2023/5/23
+ */
 const Koa = require('koa');
 const requireDirectory = require('require-directory');
 const Router = require('koa-router');
 const bodyParser = require('koa-bodyparser');
 
-const app = new Koa();
+const koaApp = new Koa();
 
-app.use(bodyParser());
+koaApp.use(bodyParser());
 
 function initRouter(app){
   const apiDirectory =`${process.cwd()}\\koa`;
@@ -25,8 +30,8 @@ function initRouter(app){
   }
 }
 
-initRouter(app);
+initRouter(koaApp);
 
-app.listen(4000, () => {
+koaApp.listen(4000, () => {
   console.log('中台koa已部署，时刻监听4000端口');
 })

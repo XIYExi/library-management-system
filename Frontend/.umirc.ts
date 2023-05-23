@@ -4,6 +4,11 @@ export default defineConfig({
   nodeModulesTransform: {
     type: 'none',
   },
+  webpack5:{},
+  dynamicImport: {},
+  dva:{
+    immer: true
+  },
   routes: [
     {
       exact: true,

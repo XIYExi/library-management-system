@@ -55,7 +55,7 @@ const ViewRender = memo((props:ViewProps) => {
       cols={24}
       rowHeight={2}
       width={width}
-      margin={[0,0]}
+      margin={[0, 0]}
       onDragStart={onDragStart}
       onDragStop={dragStop}
       onResizeStop={onResizeStop}
